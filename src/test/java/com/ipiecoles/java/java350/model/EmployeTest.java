@@ -40,7 +40,7 @@ public class EmployeTest {
 
 
 
-	@ParameterizedTest{
+	@ParameterizedTest
 	@CsvSource({
 		"1,'T12345',0,1.0,1000.0",
 		"1,'T12345',0,1.0,500.0",
