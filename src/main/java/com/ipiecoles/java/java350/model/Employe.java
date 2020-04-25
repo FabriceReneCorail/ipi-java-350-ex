@@ -102,11 +102,14 @@ public class Employe {
     }
 
     //Augmenter salaire
-    public void augmenterSalaire(double pourcentage){
+    public double augmenterSalaire(double pourcentage){
+    	//initialise la valeur salaire pour eviter d'avoir a tester le cas ou le salaire est null
     	Double salaire = Entreprise.SALAIRE_BASE;
-    	Double augmentationSalaire;
-    	
-    	
+    	//initialisation de la valeur augmentationSalaire
+    	Double augmentationSalaire = null;
+    	//initialiser le pourcentage 
+    	pourcentage = 0.12;
+       
     	//Calcul du salaire de base en fonction du matricule
     	if (matricule.startsWith(matricule, 'T')) {
     		salaire = Entreprise.SALAIRE_BASE;
@@ -117,11 +120,13 @@ public class Employe {
     	else if (matricule.startsWith(matricule, 'M')){
     		salaire = Entreprise.SALAIRE_BASE;
     	}
-    
     	//Augmentation du salaire en fonction de mon ancienneté
-    	if( this.dateEmbauche != null && this.getNombreAnneeAnciennete() > 1) {
+    	if( this.dateEmbauche != null && this.getNombreAnneeAnciennete() > 1 && pourcentage != 0) {
     		augmentationSalaire = salaire * pourcentage;
     	}
+    	
+    	// au pro rata du temps partiel
+    	return augmentationSalaire * tempsPartiel;
     }
 
     public Long getId() {
